@@ -9,7 +9,7 @@ yarn install
 basta executar o seguinte script:<br>
 
 ```
-yarn start
+yarn dev
 ```
 E assim acessar http://localhost:3000 em seu navegador.
 
