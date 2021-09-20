@@ -1,2 +1,14 @@
 # Frontend of todo list
-This repository contains an implementation of a todolist frontend application.
+## Como usar
+###Dependências do projeto
+basta utilizaro o *yarn*<br>
+```
+yarn install
+```
+### Em Fim
+basta executar o seguinte script:<br>
+
+```
+yarn start
+```
+E assim acessar http://localhost:3000 em seu navegador.
