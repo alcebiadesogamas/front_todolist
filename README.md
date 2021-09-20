@@ -1,7 +1,7 @@
 # Frontend of todo list
 ## Como usar
 ### Dependências do projeto
-basta utilizaro o *yarn*<br>
+basta utilizar o *yarn*<br>
 ```
 yarn install
 ```
