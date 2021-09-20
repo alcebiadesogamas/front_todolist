@@ -1,0 +1,44 @@
+.modal {
+    /*transform: translateY(-50%) translateX(-50%);*/
+
+    /*@apply absolute top-2/4 left-1/2 z-10;*/
+    @apply  fixed z-10 inset-0 overflow-y-auto
+}
+
+.modalOverlay {
+    @apply fixed inset-0 bg-black opacity-30 min-h-screen
+}
+
+.modalDiv1 {
+    @apply flex flex-col justify-center align-middle w-full max-h-48  flex-shrink max-w-md p-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl
+}
+
+.modalTitle {
+    @apply text-xl font-medium  text-gray-900
+}
+
+.modalDiv2 {
+    @apply flex flex-col mt-4
+}
+
+.modalLabel {
+    @apply text-lg tracking-wide
+}
+.modalInput {
+    @apply rounded-lg border-2 border-green-200 p-2 focus:border-green-500 mt-1 w-full
+}
+
+.modalDiv3 {
+    @apply flex justify-end align-middle mt-4 w-full
+}
+
+.modalButtonCancel {
+    @apply bg-red-500 text-white py-2 px-6 rounded-lg  hover:bg-red-800  transition-all
+}
+
+.modalButtonConfirm {
+    @apply ml-4 bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-800 transition-all
+}
+.modalButtonConfirm:disabled {
+@apply bg-green-300
+}
