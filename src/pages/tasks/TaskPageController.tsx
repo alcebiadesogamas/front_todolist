@@ -8,7 +8,7 @@ interface TaskObject {
   id: number;
   description: string;
   status: boolean;
-  toDoList: TaskListObject;
+  toDoListId: number;
 }
 export const TaskPageController = () => {
   const repository = new TaskRepository();
@@ -26,7 +26,7 @@ export const TaskPageController = () => {
       try {
         const response = await repository.create({
           description,
-          todoList: location.state,
+          toDoListId: location.state.id,
         });
         setTasks((values) => [...values, response.data]);
         handleModalClose();
@@ -42,7 +42,7 @@ export const TaskPageController = () => {
       if (!isLocationDefined) {
         return history.push('/');
       }
-      const response = await repository.listAll();
+      const response = await repository.findById(location.state.id);
       return response;
     } catch (e) {
       console.error(e);
@@ -50,10 +50,7 @@ export const TaskPageController = () => {
   }, []);
 
   const filterTasks = useCallback((tasks: TaskObject[] = []) => {
-    const auxFiltered = tasks.filter(
-      (task) => task.toDoList.id === location.state.id,
-    );
-    setTasks(auxFiltered);
+    setTasks(tasks);
   }, []);
 
   const deleteTask = useCallback(async (id: number) => {
@@ -79,7 +76,7 @@ export const TaskPageController = () => {
           description,
           taskId: task.id,
           status: onlyUpdateStatus ? !task.status : task.status,
-          todoList: task.toDoList,
+          toDoListId: location.state.id,
         });
         setTasks((values) => {
           const foundIndex = values.findIndex((item) => item.id === task.id);

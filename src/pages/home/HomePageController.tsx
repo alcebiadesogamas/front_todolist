@@ -15,7 +15,6 @@ export const HomePageController = () => {
   const repository = new TaskListRepository();
   const history = useHistory();
   const clearList = (value?: TaskListObject) => {
-    console.log(value);
     setState((values) => (value ? [...values, value] : []));
   };
   const getTaskList = useCallback(async () => {

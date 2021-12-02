@@ -4,11 +4,7 @@ import { AxiosResponse } from 'axios';
 
 interface CreateParams {
   description: string;
-  todoList: {
-    id: number;
-    name: string;
-    created_at: string;
-  };
+  toDoListId: number;
 }
 
 interface UpdateParams extends CreateParams {
@@ -16,21 +12,17 @@ interface UpdateParams extends CreateParams {
   status: boolean;
 }
 export class TaskRepository extends AbstractRepository {
-  private readonly endPoint: string = 'task';
+  private readonly endPoint: string = 'task/';
   async create({
     description,
-    todoList: { id, name, created_at },
+    toDoListId,
   }: CreateParams) {
     let response: AxiosResponse;
     try {
       response = await this.api.post(this.endPoint, {
         description,
         status: false,
-        toDoList: {
-          id,
-          name,
-          created_at,
-        },
+        toDoListId,
       });
       return {
         error: false,
@@ -44,7 +36,7 @@ export class TaskRepository extends AbstractRepository {
   async findById(id: number) {
     let response: AxiosResponse;
     try {
-      response = await this.api.get(this.endPoint + `/${id}`);
+      response = await this.api.get(this.endPoint + `from/${id}`);
       return {
         error: false,
         ...response,
@@ -80,18 +72,14 @@ export class TaskRepository extends AbstractRepository {
     status,
     taskId,
     description,
-    todoList: { id, name, created_at },
+    toDoListId,
   }: UpdateParams) {
     let response: AxiosResponse;
     try {
       response = await this.api.put(this.endPoint + `/${taskId}`, {
         description,
         status,
-        toDoList: {
-          id,
-          name,
-          created_at,
-        },
+        toDoListId,
       });
       return response;
     } catch (e) {

@@ -18,7 +18,7 @@ export default function TaskPage() {
             <div
               key={item.id}
               className={
-                'bg-white   border-t-2 border-b-2 border-green-300 flex justify-center align-middle p-2 cursor-pointer group transition-all mb-2 '
+                'bg-white border-t-2 border-b-2 border-green-300 flex justify-center align-middle p-2 cursor-pointer group transition-all mb-2'
               }
             >
               <div className={'flex justify-center align-middle'}>
@@ -30,7 +30,6 @@ export default function TaskPage() {
                 >
                   {item?.description}
                 </span>
-
                 <button
                   onClick={() => deleteTask(item.id)}
                   className={'text-red-500 text-2xl ml-12'}
